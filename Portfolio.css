@@ -565,22 +565,22 @@ section {
 }
 
 .skill-bar .bar .html {
-    width: 75%;
+    width: 90%;
     animation: html 2s;
 }
 
 .skill-bar .bar .css {
-    width: 78%;
+    width: 85%;
     animation: css 3s;
 }
 
 .skill-bar .bar .java {
-    width: 85%;
+    width: 80%;
     animation: java 4s;
 }
 
 .skill-bar .bar .javascript {
-    width: 95%;
+    width: 88%;
     animation: javascript 5s;
 }
 
