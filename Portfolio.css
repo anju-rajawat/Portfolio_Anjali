@@ -145,6 +145,14 @@ section { position: relative; z-index: 1; }
 .photo-frame img {
   width: 100%; height: 100%; object-fit: cover; object-position: top center;
   border-radius: 22px; background: var(--bg-soft); display: block;
+  filter: contrast(1.06) saturate(1.08) brightness(1.02);
+}
+/* fade the casual lower background into the theme + subtle brand tint */
+.photo-frame .frame-overlay {
+  position: absolute; inset: 6px; border-radius: 22px; pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(10,14,26,0.92) 2%, rgba(10,14,26,0.25) 30%, transparent 55%),
+    linear-gradient(135deg, rgba(34,211,238,0.10), rgba(139,92,246,0.12));
 }
 @keyframes floaty { 50% { transform: translateY(-16px); } }
 @keyframes pulseBorder { 50% { transform: scale(1.03); opacity: 0.6; } }
