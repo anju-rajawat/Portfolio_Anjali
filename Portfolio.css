@@ -157,6 +157,31 @@ section { position: relative; z-index: 1; }
 .stat b { display: block; font-family: 'Sora'; font-size: 1.7rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .stat small { color: var(--muted); font-size: 0.8rem; }
 
+/* ---------------- Experience timeline ---------------- */
+.timeline { max-width: 780px; margin: 0 auto; position: relative; padding-left: 34px; }
+.timeline::before {
+  content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px;
+  background: linear-gradient(var(--c1), var(--c2));
+  opacity: 0.4;
+}
+.tl-item {
+  position: relative; margin-bottom: 28px;
+  background: var(--card); border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 22px 24px; transition: transform .3s, border-color .3s;
+}
+.tl-item:hover { transform: translateX(6px); border-color: var(--c1); }
+.tl-item::before {
+  content: ''; position: absolute; left: -34px; top: 24px; width: 16px; height: 16px;
+  border-radius: 50%; background: var(--grad); box-shadow: 0 0 0 5px rgba(34, 211, 238, 0.12);
+}
+.tl-item .when {
+  display: inline-block; color: var(--c1); font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px;
+}
+.tl-item h3 { font-size: 1.15rem; margin-bottom: 8px; }
+.tl-item h3 .org { color: var(--muted); font-weight: 500; font-size: 0.95rem; }
+.tl-item p { color: var(--muted); font-size: 0.94rem; }
+
 /* ---------------- Cards (services) ---------------- */
 .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .scard {
