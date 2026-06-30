@@ -144,20 +144,24 @@ section { position: relative; z-index: 1; }
 }
 .photo-inner {
   position: relative; width: 100%; height: 100%; overflow: hidden;
-  border-radius: 22px; background: var(--bg-soft);
+  border-radius: 22px;
+  /* clean branded studio backdrop behind the cut-out photo */
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(34, 211, 238, 0.28), transparent 55%),
+    radial-gradient(120% 80% at 50% 100%, rgba(139, 92, 246, 0.30), transparent 55%),
+    linear-gradient(160deg, #14203a, #0b1124);
 }
-/* zoom & position to crop into head + shoulders */
+/* zoom & position to crop into head + upper body */
 .photo-inner img {
-  width: 100%; height: 100%; object-fit: cover; object-position: 50% 10%;
-  transform: scale(1.22); transform-origin: 50% 8%; display: block;
-  filter: contrast(1.06) saturate(1.08) brightness(1.03);
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 4%;
+  transform: scale(1.14); transform-origin: 50% 0; display: block;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45)) contrast(1.04) saturate(1.08);
 }
-/* subtle fade + brand tint */
+/* very subtle bottom blend into the backdrop */
 .frame-overlay {
   position: absolute; inset: 0; border-radius: 22px; pointer-events: none;
-  background:
-    linear-gradient(to top, rgba(10,14,26,0.80) 0%, rgba(10,14,26,0.12) 28%, transparent 50%),
-    linear-gradient(135deg, rgba(34,211,238,0.08), rgba(139,92,246,0.10));
+  background: linear-gradient(to top, rgba(11, 17, 36, 0.65) 0%, transparent 32%);
 }
 @keyframes floaty { 50% { transform: translateY(-16px); } }
 @keyframes pulseBorder { 50% { transform: scale(1.03); opacity: 0.6; } }
