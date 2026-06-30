@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 
   // ---------- Typing effect ----------
-  const roles = ['Web Developer', 'React Developer', 'Full-Stack Developer', 'Trainee @ InfoBeans']
+  const roles = ['.NET Full-Stack Developer', 'ASP.NET Web Forms Developer', 'SQL Server Developer', 'ERP Web Developer']
   const typingEl = document.getElementById('typing')
   let r = 0, i = 0, deleting = false
   function type() {
