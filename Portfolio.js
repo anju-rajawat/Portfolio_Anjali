@@ -1,79 +1,92 @@
-var words = document.getElementsByClassName('word');
-var wordArray = [];
-var currentWord = 0;
+/* ============================================================
+   Anjali Rajawat — Portfolio interactions
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+  // ---------- Mobile menu ----------
+  const menuBtn = document.getElementById('menuBtn')
+  const navLinks = document.getElementById('navLinks')
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'))
+  navLinks.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => navLinks.classList.remove('open')),
+  )
 
-words[currentWord].style.opacity = 1;
-for (var i = 0; i < words.length; i++) {
-    splitLetters(words[i]);
-}
+  // ---------- Navbar shrink + to-top ----------
+  const navbar = document.getElementById('navbar')
+  const toTop = document.getElementById('toTop')
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 30)
+    toTop.classList.toggle('show', window.scrollY > 500)
+  })
 
-
-function changeWord() {
-    var cw = wordArray[currentWord];
-    var nw = currentWord == words.length - 1 ? wordArray[0] : wordArray[currentWord + 1];
-    for (var i = 0; i < cw.length; i++) {
-        animateLetterOut(cw, i);
+  // ---------- Typing effect ----------
+  const roles = ['Web Developer', 'React Developer', 'Full-Stack Developer', 'Trainee @ InfoBeans']
+  const typingEl = document.getElementById('typing')
+  let r = 0, i = 0, deleting = false
+  function type() {
+    const word = roles[r]
+    typingEl.textContent = word.slice(0, i)
+    if (!deleting && i < word.length) {
+      i++
+    } else if (deleting && i > 0) {
+      i--
+    } else {
+      if (!deleting) { deleting = true; setTimeout(type, 1400); return }
+      deleting = false
+      r = (r + 1) % roles.length
     }
+    setTimeout(type, deleting ? 55 : 110)
+  }
+  type()
 
-    for (var i = 0; i < nw.length; i++) {
-        nw[i].className = 'letter behind';
-        nw[0].parentElement.style.opacity = 1;
-        animateLetterIn(nw, i);
-    }
-    
-    currentWord = (currentWord == wordArray.length - 1) ? 0 : currentWord + 1;
-}
+  // ---------- Project filter ----------
+  const filterBtns = document.querySelectorAll('.filters button')
+  const cards = document.querySelectorAll('.pcard')
+  filterBtns.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('active'))
+      btn.classList.add('active')
+      const f = btn.dataset.filter
+      cards.forEach((c) => {
+        const show = f === 'all' || c.dataset.cat === f
+        c.classList.toggle('hide', !show)
+      })
+    }),
+  )
 
-function animateLetterOut(cw, i) {
-    setTimeout(function () {
-        cw[i].className = 'letter out';
-    }, i * 80);
-}
+  // ---------- Scroll-spy (active nav link) ----------
+  const sections = document.querySelectorAll('section[id]')
+  const links = document.querySelectorAll('.nav-links a')
+  window.addEventListener('scroll', () => {
+    let current = ''
+    sections.forEach((s) => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id
+    })
+    links.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + current))
+  })
 
-function animateLetterIn(nw, i) {
-    setTimeout(function () {
-        nw[i].className = 'letter in';
-    }, 340 + (i * 80));
-}
+  // ---------- Reveal on scroll + animate skill bars ----------
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in')
+          e.target.querySelectorAll('.bar > span').forEach((b) => (b.style.width = b.dataset.w))
+          io.unobserve(e.target)
+        }
+      })
+    },
+    { threshold: 0.15 },
+  )
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el))
 
-function splitLetters(word) {
-    var content = word.innerHTML;
-    word.innerHTML = '';
-    var letters = [];
-    for (var i = 0; i < content.length; i++) {
-        var letter = document.createElement('span');
-        letter.className = 'letter';
-        letter.innerHTML = content.charAt(i);
-        word.appendChild(letter);
-        letters.push(letter);
-    }
-
-    wordArray.push(letters);
-}
-
-changeWord();
-setInterval(changeWord, 2000);
-
-// -------------------------circle--skills--------------------------------------------------
-const circle = document.querySelectorAll('.circle');
-circle.forEach(element => {
-    var dots = element.getAttribute("data-dots");
-    var marked = element.getAttribute("data-percent");
-    var percent = Math.floor(dots * marked / 100);
-    var points = "";
-    var rotate = 360 / dots;
-
-    for (let i = 0; i < dots; i++) {
-        points += ` <div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`;
-
-    }
-    element.innerHTML = points;
-
-    const pointsMarked = element.querySelectorAll('.points');
-    for (let i = 0; i < percent; i++) {
-        pointsMarked[i].classList.add('marked');
-    }
+  // ---------- Contact form -> email ----------
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault()
+    const f = this
+    const body = encodeURIComponent(
+      `Name: ${f.name.value}\nEmail: ${f.email.value}\nPhone: ${f.phone.value}\nAddress: ${f.address.value}\n\n${f.message.value}`,
+    )
+    const subject = encodeURIComponent('Portfolio enquiry from ' + f.name.value)
+    window.location.href = `mailto:anjalirajawat712@gmail.com?subject=${subject}&body=${body}`
+  })
 })
-
-// ---------------portfolio section------------------
-const mixer = mixitup('.protfolio-gallery');
