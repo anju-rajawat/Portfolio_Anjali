@@ -2,278 +2,505 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anjali Rajawat — .NET Full-Stack Developer</title>
-    <meta name="description" content="Anjali Rajawat — .NET Full-Stack Developer with 1.5+ years building enterprise ERP web apps using ASP.NET Web Forms (VB.NET), JavaScript, SQL Server & DevExtreme.">
-    <link rel="stylesheet" href="Portfolio.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anjali Rajawat — .NET Full-Stack Developer</title>
+  <meta name="description" content="Anjali Rajawat: .NET Full-Stack Developer building enterprise ERP modules end to end with ASP.NET Web Forms (VB.NET), SQL Server, jQuery and DevExtreme.">
+  <meta name="theme-color" content="#05060b">
+  <meta property="og:title" content="Anjali Rajawat — .NET Full-Stack Developer">
+  <meta property="og:description" content="Enterprise ERP modules, from database to UI. Case study, architecture and projects.">
+  <meta property="og:image" content="img/profile-cut.png">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Portfolio.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Anjali Rajawat","jobTitle":".NET Full-Stack Developer","worksFor":{"@type":"Organization","name":"Indus Analytics"},"email":"mailto:anjalirajawat712@gmail.com","sameAs":["https://github.com/anju-rajawat"]}
+  </script>
 </head>
 
 <body>
+  <a href="#main" class="skip">Skip to content</a>
 
-    <!-- ===== Navbar ===== -->
-    <header class="navbar" id="navbar">
-        <a href="#home" class="logo">Anjali<span>.</span></a>
-        <nav class="nav-links" id="navLinks">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#services">Services</a>
-            <a href="#skills">Skills</a>
-            <a href="#portfolio">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <div class="menu-btn" id="menuBtn"><i class='bx bx-menu'></i></div>
-    </header>
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <div class="loader-logo">AR<span>.</span></div>
+      <div class="loader-bar"><span id="loaderBar"></span></div>
+      <code class="loader-text" id="loaderText">&gt; connecting to SQL Server…</code>
+    </div>
+  </div>
 
-    <!-- ===== Hero ===== -->
-    <section class="hero" id="home">
-        <div class="hero-text reveal">
-            <p class="eyebrow">👋 Hello, I'm</p>
-            <h1 class="grad-text">Anjali Rajawat</h1>
-            <div class="hero-role">I'm a <span class="typing" id="typing"></span></div>
-            <p class="lead">Full-stack .NET developer with <b>1.5+ years</b> of experience building data-driven
-                enterprise (ERP) web applications using ASP.NET Web Forms (VB.NET), JavaScript and SQL Server.
-                I design dynamic, configuration-driven UI modules with DevExtreme, write optimized T-SQL, and
-                deliver CRUD, approval-workflow and reporting features end to end.</p>
-            <p class="hero-contact"><b>Email:</b> anjalirajawat712@gmail.com &nbsp; | &nbsp; <b>Phone:</b> +91 90095 54739</p>
-            <div class="hero-actions">
-                <a href="Anjali_Rajawat_Resume.pdf" download class="btn primary"><i class='bx bxs-download'></i> Download Resume</a>
-                <a href="#portfolio" class="btn ghost">View My Work</a>
-                <a href="#contact" class="btn ghost">Hire Me</a>
-            </div>
-            <div class="socials">
-                <a href="https://github.com/anju-rajawat" target="_blank" rel="noopener" title="GitHub"><i class='bx bxl-github'></i></a>
-                <a href="https://www.linkedin.com/in/anjali-rajawat" target="_blank" rel="noopener" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-                <a href="mailto:anjalirajawat712@gmail.com" title="Email"><i class='bx bx-envelope'></i></a>
-                <a href="tel:+919009554739" title="Call"><i class='bx bx-phone'></i></a>
-            </div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="bg" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="blueprint"></div>
+  </div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="logo"><span class="logo-mark">AR</span><span class="logo-txt">anjali<span>.dev</span></span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="#case-study">Case Study</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#projects">Projects</a>
+        <a href="#stack">Stack</a>
+        <a href="#experience">Experience</a>
+      </nav>
+      <div class="nav-right">
+        <span class="nav-clock mono" title="India Standard Time"><span class="dot-live"></span><span id="navClock">--:--</span> IST</span>
+        <a href="#contact" class="nav-cta">Contact <kbd>C</kbd></a>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><i class="bx bx-menu"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero container" id="home">
+      <div class="hero-text">
+        <p class="eyebrow mono hero-anim"><span class="br">//</span> .NET Full-Stack Developer · Enterprise ERP</p>
+        <h1 class="hero-title">
+          <span class="line"><span class="word">I turn business</span></span>
+          <span class="line"><span class="word">processes into</span></span>
+          <span class="line"><span class="word grad-text">reliable ERP software.</span></span>
+        </h1>
+        <p class="lead hero-anim">I'm <b>Anjali Rajawat</b>. For 1.5+ years I've built ERP modules end to end, from the SQL Server schema
+          to the screen, for the inventory, purchase and production teams of a manufacturing &amp; printing business.</p>
+        <div class="hero-role mono hero-anim"><span class="muted">currently:</span> <span class="typing" id="typing">building approval workflows</span><span class="caret"></span></div>
+        <div class="hero-actions hero-anim">
+          <a href="#case-study" class="btn primary magnetic"><span>See the case study</span><i class="bx bx-right-arrow-alt"></i></a>
+          <a href="Anjali_Rajawat_Resume.pdf" download class="btn ghost magnetic"><i class="bx bx-download"></i><span>Resume</span></a>
         </div>
-        <div class="hero-photo reveal">
-            <div class="photo-frame">
-                <div class="photo-inner">
-                    <img src="img/profile-cut.png" alt="Anjali Rajawat — .NET Full-Stack Developer">
-                    <span class="frame-overlay"></span>
-                </div>
-            </div>
+      </div>
+
+      <aside class="id-card glass hero-anim tilt" aria-label="Profile summary">
+        <span class="spot"></span>
+        <div class="id-top">
+          <span class="mono id-label">ID / 2026</span>
+          <span class="status"><span class="pulse"></span> Open to work</span>
         </div>
+        <div class="id-photo">
+          <div class="id-ring"></div>
+          <img src="img/profile-cut.png" alt="Portrait of Anjali Rajawat" width="300" height="300" fetchpriority="high">
+        </div>
+        <h2 class="id-name">Anjali Rajawat</h2>
+        <p class="id-role">.NET Full-Stack Developer</p>
+        <dl class="id-meta mono">
+          <div><dt>company</dt><dd>Indus Analytics</dd></div>
+          <div><dt>since</dt><dd>Nov 2024</dd></div>
+          <div><dt>domain</dt><dd>ERP · Printing</dd></div>
+          <div><dt>local</dt><dd><span id="cardClock">--:--:--</span> IST</dd></div>
+        </dl>
+        <a href="#recognition" class="id-award"><i class="bx bxs-award"></i> Certificate of Contribution · 2026</a>
+        <div class="id-socials">
+          <a href="https://github.com/anju-rajawat" target="_blank" rel="noopener" aria-label="GitHub"><i class="bx bxl-github"></i></a>
+          <a href="https://www.linkedin.com/in/anjali-rajawat" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+          <a href="mailto:anjalirajawat712@gmail.com" aria-label="Email"><i class="bx bx-envelope"></i></a>
+          <a href="tel:+919009554739" aria-label="Phone"><i class="bx bx-phone"></i></a>
+        </div>
+      </aside>
+
+      <!-- Pipeline strip -->
+      <div class="pipeline hero-anim" aria-label="How a feature moves from requirement to users">
+        <div class="pipe-track"><span class="pipe-pulse"></span></div>
+        <div class="pipe-step"><i class="bx bx-message-square-detail"></i><span>Requirement</span></div>
+        <div class="pipe-step"><i class="bx bx-data"></i><span>Schema</span></div>
+        <div class="pipe-step"><i class="bx bx-server"></i><span>Service</span></div>
+        <div class="pipe-step"><i class="bx bx-grid-alt"></i><span>UI</span></div>
+        <div class="pipe-step"><i class="bx bx-check-shield"></i><span>Approval</span></div>
+        <div class="pipe-step"><i class="bx bx-group"></i><span>Users</span></div>
+      </div>
     </section>
 
-    <!-- ===== About ===== -->
-    <section class="section" id="about">
-        <div class="section-head reveal"><span>Get to know</span><h2>About Me</h2></div>
-        <div class="about-grid">
-            <div class="about-img reveal"><img src="img/profile-cut.png" alt="Anjali Rajawat"></div>
-            <div class="about-text reveal">
-                <h3>Building enterprise ERP, end to end</h3>
-                <p>I'm a .NET Full-Stack Developer at Indus Analytics, where I design and deliver ERP modules
-                    used daily by inventory, purchase and production teams. I own the full cycle — from UI and
-                    database design to web-service integration and testing — with a focus on clean, maintainable
-                    code, reusable workflows and backward compatibility within large existing codebases.</p>
-                <div class="stats">
-                    <div class="stat"><b>1.5+</b><small>Years Experience</small></div>
-                    <div class="stat"><b>10+</b><small>ERP Modules</small></div>
-                    <div class="stat"><b>End-to-End</b><small>Ownership</small></div>
-                </div>
-                <a href="Anjali_Rajawat_Resume.pdf" download class="btn primary">
-                    <i class='bx bxs-download'></i> Download Resume
-                </a>
-            </div>
-        </div>
+    <!-- Stats -->
+    <section class="container stats-strip" aria-label="Highlights">
+      <div class="stat reveal"><b><span class="count" data-to="1.5" data-dec="1">0</span>+</b><small>years building ERP software</small></div>
+      <div class="stat reveal"><b><span class="count" data-to="3">0</span></b><small>key ERP modules shipped</small></div>
+      <div class="stat reveal"><b>~<span class="count" data-to="50">0</span>%</b><small>less duplicate flow code</small></div>
+      <div class="stat reveal"><b><span class="count" data-to="100">0</span>s</b><small>records validated in T-SQL</small></div>
     </section>
 
-    <!-- ===== Experience ===== -->
-    <section class="section" id="experience">
-        <div class="section-head reveal"><span>My journey</span><h2>Experience</h2></div>
-        <div class="timeline">
-            <div class="tl-item reveal">
-                <span class="when">Nov 2024 – Present</span>
-                <h3>Software Developer <span class="org">· Indus Analytics</span></h3>
-                <p><em>ERP Web Application — Manufacturing / Printing Domain</em></p>
-                <ul class="tl-list">
-                    <li>Designed &amp; delivered end-to-end ERP modules in ASP.NET Web Forms (VB.NET) used daily by
-                        inventory, purchase &amp; production teams.</li>
-                    <li>Engineered a configuration-driven form engine that renders fields, validations &amp; item
-                        templates per product group from metadata — removing dozens of hard-coded screens.</li>
-                    <li>Re-architected duplicated Item &amp; Spare-part flows into one reusable, flag-driven workflow,
-                        cutting redundant grids, modals &amp; save logic by ~half — fully backward-compatible.</li>
-                    <li>Built a role-based access layer (UserMaster employee-allocation) with in-grid one-click
-                        “Send for Approval” actions.</li>
-                    <li>Developed AMC, Capex &amp; HSN/GST master modules with dependent dropdowns &amp; auto-filled tax
-                        data, wired to SQL Server via ASMX web services.</li>
-                    <li>Wrote &amp; optimized complex T-SQL (multi-table joins, EXISTS filters, bulk verification)
-                        validating data integrity across hundreds of records.</li>
-                </ul>
-            </div>
+    <!-- ================= 01 APPROACH ================= -->
+    <section class="section container" id="approach">
+      <div class="section-head reveal">
+        <span class="kicker mono">01 / approach</span>
+        <h2>From business problem <span class="muted">to working system.</span></h2>
+      </div>
+      <ol class="phase-bar reveal" aria-hidden="true">
+        <li><span>01</span> Problem</li>
+        <li><span>02</span> Engineering</li>
+        <li><span>03</span> System</li>
+      </ol>
+      <div class="approach-grid">
+        <div class="ap-col glass reveal">
+          <h3><i class="bx bx-error-alt"></i> The problem</h3>
+          <ul class="ap-list">
+            <li>A separate hard-coded screen for every item category</li>
+            <li>Item and Spare-part flows duplicated grid by grid</li>
+            <li>Requests needed to be seen by the right people only</li>
+            <li>Tax data that should come from master records</li>
+          </ul>
         </div>
+        <div class="ap-col glass reveal">
+          <h3><i class="bx bx-code-block"></i> The engineering</h3>
+          <ol class="ap-steps">
+            <li>Design the tables in SQL Server</li>
+            <li>Write parameterized T-SQL</li>
+            <li>Expose it through ASMX web services</li>
+            <li>Build the UI with DevExtreme &amp; jQuery</li>
+            <li>Test with the users and refine</li>
+          </ol>
+        </div>
+        <div class="ap-col glass reveal">
+          <h3><i class="bx bx-cube-alt"></i> The system</h3>
+          <div class="chips">
+            <span>Metadata-driven forms</span><span>Flag-driven workflow</span><span>Role-based visibility</span>
+            <span>HSN → GST auto-fill</span><span>One-click approvals</span><span>Bulk approver allocation</span>
+            <span>Backward compatible</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- ===== Services ===== -->
-    <section class="section" id="services">
-        <div class="section-head reveal"><span>What I do</span><h2>What I Build</h2></div>
-        <div class="cards-3">
-            <div class="scard reveal">
-                <div class="ico"><i class='bx bx-buildings'></i></div>
-                <h3>Enterprise ERP Development</h3>
-                <p>End-to-end ASP.NET Web Forms (VB.NET) modules for inventory, purchase &amp; production — CRUD,
-                    approval workflows and reporting.</p>
-                <a href="#contact">Let's talk →</a>
-            </div>
-            <div class="scard reveal">
-                <div class="ico"><i class='bx bx-data'></i></div>
-                <h3>Database &amp; T-SQL</h3>
-                <p>SQL Server schema design, complex queries, joins &amp; stored-procedure integration with query
-                    optimization and data integrity.</p>
-                <a href="#contact">Let's talk →</a>
-            </div>
-            <div class="scard reveal">
-                <div class="ico"><i class='bx bx-grid-alt'></i></div>
-                <h3>Configuration-Driven UI</h3>
-                <p>Dynamic DevExtreme grids &amp; forms, reusable flag-driven workflows, role-based visibility and
-                    responsive Bootstrap layouts.</p>
-                <a href="#contact">Let's talk →</a>
-            </div>
+    <!-- ================= 02 CASE STUDY ================= -->
+    <section class="section container" id="case-study">
+      <div class="section-head reveal">
+        <span class="kicker mono">02 / case study</span>
+        <h2>Inventory &amp; New Item-Request <span class="muted">module.</span></h2>
+        <p class="section-sub">One item request, from the first click to the item master. Click a stage or let it play.
+          This is the module I designed and built across the full stack at Indus Analytics.</p>
+      </div>
+
+      <div class="demo reveal">
+        <ol class="stage-list" id="stageList" role="tablist" aria-label="Item request stages"></ol>
+        <div class="demo-window glass">
+          <div class="dw-bar">
+            <span class="dw-dots"><i></i><i></i><i></i></span>
+            <span class="mono dw-url">erp / inventory / item-request</span>
+            <button class="dw-play" id="stagePlay" aria-label="Pause demo"><i class="bx bx-pause"></i></button>
+          </div>
+          <div class="dw-progress"><span id="stageProgress"></span></div>
+          <p class="dw-caption" id="stageCaption" aria-live="polite"></p>
+          <div class="dw-body" id="stageView" role="tabpanel" aria-live="polite"></div>
+          <p class="dw-note mono">Illustrative mock. The real application is proprietary.</p>
         </div>
+      </div>
+
+      <h3 class="sub-head reveal"><i class="bx bx-wrench"></i> Under the hood</h3>
+      <div class="spec-grid">
+        <div class="spec glass reveal"><small class="mono">backend</small><b>VB.NET · ASP.NET Web Forms (.NET 4.8)</b></div>
+        <div class="spec glass reveal"><small class="mono">services</small><b>ASMX web services · AJAX</b></div>
+        <div class="spec glass reveal"><small class="mono">frontend</small><b>jQuery · DevExtreme (dxDataGrid, dxSelectBox, dxDateBox)</b></div>
+        <div class="spec glass reveal"><small class="mono">data</small><b>SQL Server · T-SQL · parameterized queries</b></div>
+        <div class="spec glass reveal"><small class="mono">access</small><b>Creator + reporting HOD via UserMaster mapping</b></div>
+        <div class="spec glass reveal"><small class="mono">quality</small><b>Duplicate checks · dynamic validation · data integrity</b></div>
+      </div>
+
+      <!-- Before / After -->
+      <div class="ba glass reveal" id="ba">
+        <div class="ba-head">
+          <div>
+            <h3>Refactor: one workflow instead of two</h3>
+            <p class="muted">The Item and Spare-part flows were duplicated. I merged them into one reusable workflow that a flag controls.</p>
+          </div>
+          <div class="ba-toggle" role="group" aria-label="Before or after">
+            <button class="active" data-ba="before">Before</button>
+            <button data-ba="after">After</button>
+          </div>
+        </div>
+        <div class="ba-stage" data-state="before">
+          <div class="ba-before">
+            <div class="ba-flow"><b>Item flow</b><span>Grid</span><span>Modal</span><span>Save logic</span><span>Validation</span></div>
+            <div class="ba-flow"><b>Spare flow</b><span>Grid</span><span>Modal</span><span>Save logic</span><span>Validation</span></div>
+          </div>
+          <div class="ba-after">
+            <div class="ba-flag mono">isSpare = true | false</div>
+            <div class="ba-flow one"><b>One workflow</b><span>Grid</span><span>Modal</span><span>Save logic</span><span>Validation</span></div>
+          </div>
+        </div>
+        <p class="ba-result"><i class="bx bx-trending-down"></i><span>Redundant grids, modals and save logic cut by <b>roughly half</b>. Every existing validation and backend behaviour still works.</span></p>
+      </div>
     </section>
 
-    <!-- ===== Skills ===== -->
-    <section class="section" id="skills">
-        <div class="section-head reveal"><span>My toolbox</span><h2>Skills &amp; Tech</h2></div>
-        <div class="skills-grid">
-            <div class="skills-bars reveal">
-                <h3>Technical Skills</h3>
-                <div class="bar-item"><div class="bar-top"><span>ASP.NET Web Forms (VB.NET)</span><span>88%</span></div><div class="bar"><span data-w="88%"></span></div></div>
-                <div class="bar-item"><div class="bar-top"><span>SQL Server / T-SQL</span><span>85%</span></div><div class="bar"><span data-w="85%"></span></div></div>
-                <div class="bar-item"><div class="bar-top"><span>JavaScript &amp; jQuery</span><span>85%</span></div><div class="bar"><span data-w="85%"></span></div></div>
-                <div class="bar-item"><div class="bar-top"><span>DevExtreme UI</span><span>80%</span></div><div class="bar"><span data-w="80%"></span></div></div>
-                <div class="bar-item"><div class="bar-top"><span>HTML, CSS &amp; Bootstrap</span><span>85%</span></div><div class="bar"><span data-w="85%"></span></div></div>
-            </div>
-            <div class="tech reveal">
-                <h3>Tools &amp; Technologies</h3>
-                <div class="tech-cloud">
-                    <span class="chip"><i class='bx bxl-microsoft'></i> .NET 4.8</span>
-                    <span class="chip"><i class='bx bx-code-alt'></i> VB.NET</span>
-                    <span class="chip"><i class='bx bxl-javascript'></i> JavaScript</span>
-                    <span class="chip"><i class='bx bx-data'></i> SQL Server</span>
-                    <span class="chip"><i class='bx bx-server'></i> ASMX / AJAX</span>
-                    <span class="chip"><i class='bx bxl-jquery'></i> jQuery</span>
-                    <span class="chip"><i class='bx bx-grid'></i> DevExtreme</span>
-                    <span class="chip"><i class='bx bxl-bootstrap'></i> Bootstrap 5</span>
-                    <span class="chip"><i class='bx bxl-html5'></i> HTML5</span>
-                    <span class="chip"><i class='bx bxl-css3'></i> CSS3</span>
-                    <span class="chip"><i class='bx bxl-visual-studio'></i> Visual Studio</span>
-                    <span class="chip"><i class='bx bxl-git'></i> Git</span>
-                </div>
-            </div>
+    <!-- ================= 03 ARCHITECTURE ================= -->
+    <section class="section container" id="architecture">
+      <div class="section-head reveal">
+        <span class="kicker mono">03 / architecture</span>
+        <h2>How a request travels <span class="muted">through the stack.</span></h2>
+        <p class="section-sub">Click a layer to see what I build there.</p>
+      </div>
+      <div class="arch reveal">
+        <div class="arch-flow" id="archFlow" role="tablist" aria-label="Architecture layers">
+          <button class="arch-node active" data-layer="0" role="tab"><i class="bx bx-desktop"></i><b>Browser UI</b><small>DevExtreme · jQuery</small></button>
+          <span class="arch-link"><i></i></span>
+          <button class="arch-node" data-layer="1" role="tab"><i class="bx bx-transfer-alt"></i><b>AJAX</b><small>JSON calls</small></button>
+          <span class="arch-link"><i></i></span>
+          <button class="arch-node" data-layer="2" role="tab"><i class="bx bx-server"></i><b>ASMX Services</b><small>VB.NET · .NET 4.8</small></button>
+          <span class="arch-link"><i></i></span>
+          <button class="arch-node" data-layer="3" role="tab"><i class="bx bx-data"></i><b>SQL Server</b><small>T-SQL</small></button>
         </div>
+        <div class="arch-detail glass" id="archDetail" aria-live="polite"></div>
+      </div>
     </section>
 
-    <!-- ===== Projects ===== -->
-    <section class="section" id="portfolio">
-        <div class="section-head reveal"><span>What I've built</span><h2>Key Projects</h2></div>
-        <div class="filters reveal">
-            <button class="active" data-filter="all">All</button>
-            <button data-filter="erp">Enterprise ERP</button>
-            <button data-filter="web">Web Apps</button>
-            <button data-filter="frontend">Frontend</button>
-        </div>
-        <div class="projects">
-            <article class="pcard reveal" data-cat="erp">
-                <div class="thumb"><span class="tag">Enterprise ERP</span><img src="img/1.jpg" alt="Inventory Module"></div>
-                <div class="body">
-                    <h3>Inventory &amp; New Item-Request Module</h3>
-                    <p>Group-aware item creation with live duplicate/similar checks, HSN-driven auto-filled GST,
-                        dynamic validation and single-click approval posting.</p>
-                    <div class="links"><span class="muted-link"><i class='bx bx-buildings'></i> Indus Analytics · Confidential</span></div>
-                </div>
-            </article>
+    <!-- ================= 04 PROJECTS ================= -->
+    <section class="section container" id="projects">
+      <div class="section-head reveal">
+        <span class="kicker mono">04 / more systems</span>
+        <h2>Other modules <span class="muted">&amp; projects.</span></h2>
+      </div>
 
-            <article class="pcard reveal" data-cat="erp">
-                <div class="thumb"><span class="tag">Enterprise ERP</span><img src="img/2.jpg" alt="Spare & AMC"></div>
-                <div class="body">
-                    <h3>Spare &amp; AMC Management</h3>
-                    <p>Unified spare-part request workflow and full AMC lifecycle with machine allocation,
-                        production-unit/department mapping and reference linkage.</p>
-                    <div class="links"><span class="muted-link"><i class='bx bx-buildings'></i> Indus Analytics · Confidential</span></div>
-                </div>
-            </article>
+      <div class="projects">
+        <article class="pcard glass reveal tilt">
+          <span class="spot"></span>
+          <div class="p-top"><span class="tag mono">ERP · Indus Analytics</span><i class="bx bx-lock-alt" title="Proprietary"></i></div>
+          <h3>Spare &amp; AMC Management</h3>
+          <p>One unified workflow for spare-part requests, plus the full AMC lifecycle.</p>
+          <div class="mini-flow mono"><span>Request</span><i class="bx bx-chevron-right"></i><span>Machine</span><i class="bx bx-chevron-right"></i><span>Unit → Dept</span><i class="bx bx-chevron-right"></i><span>AMC</span></div>
+          <details>
+            <summary>Show details</summary>
+            <ul class="feat">
+              <li>Merged spare-part requests into the shared, flag-driven item workflow</li>
+              <li>Full AMC lifecycle with machine allocation</li>
+              <li>Production-unit → department mapping and reference linking</li>
+            </ul>
+          </details>
+          <div class="chips"><span>VB.NET</span><span>jQuery</span><span>DevExtreme</span><span>SQL Server</span></div>
+        </article>
 
-            <article class="pcard reveal" data-cat="erp">
-                <div class="thumb"><span class="tag">Enterprise ERP</span><img src="img/3.jpg" alt="Approval & Access"></div>
-                <div class="body">
-                    <h3>Approval &amp; Access Control</h3>
-                    <p>Configurable multi-level user-approval settings with department-wise bulk allocation and
-                        HOD-based request visibility.</p>
-                    <div class="links"><span class="muted-link"><i class='bx bx-buildings'></i> Indus Analytics · Confidential</span></div>
-                </div>
-            </article>
+        <article class="pcard glass reveal tilt">
+          <span class="spot"></span>
+          <div class="p-top"><span class="tag mono">ERP · Indus Analytics</span><i class="bx bx-lock-alt" title="Proprietary"></i></div>
+          <h3>Approval &amp; Access Control</h3>
+          <p>Multi-level approval settings, and requests visible only to the people who should see them.</p>
+          <div class="mini-flow mono"><span>Creator</span><i class="bx bx-chevron-right"></i><span>HOD</span><i class="bx bx-chevron-right"></i><span>Approved</span></div>
+          <details>
+            <summary>Show details</summary>
+            <ul class="feat">
+              <li>Visibility through the UserMaster employee-allocation mapping</li>
+              <li>One-click "Send for Approval" inside the grid</li>
+              <li>Bulk approver allocation by department</li>
+            </ul>
+          </details>
+          <div class="chips"><span>VB.NET</span><span>T-SQL</span><span>Role-based access</span></div>
+        </article>
 
-            <article class="pcard reveal" data-cat="web">
-                <div class="thumb"><span class="tag">Live · React</span><img src="img/4.jpg" alt="BuildMart"></div>
-                <div class="body">
-                    <h3>BuildMart — Marketplace + ERP</h3>
-                    <p>Construction materials marketplace &amp; ERP built with React, TypeScript &amp; Tailwind.
-                        Live on Vercel.</p>
-                    <div class="links">
-                        <a href="https://buildmart-marketplace-erp.vercel.app" target="_blank" rel="noopener"><i class='bx bx-link-external'></i> Live</a>
-                        <a href="https://github.com/anju-rajawat/buildmart-marketplace-erp" target="_blank" rel="noopener"><i class='bx bxl-github'></i> Code</a>
-                    </div>
-                </div>
-            </article>
+        <article class="pcard glass reveal tilt">
+          <span class="spot"></span>
+          <div class="p-top"><span class="tag mono">ERP · Indus Analytics</span><i class="bx bx-lock-alt" title="Proprietary"></i></div>
+          <h3>Master Modules: AMC, Capex, HSN/GST</h3>
+          <p>Master data screens with dependent dropdowns and tax data that fills in automatically.</p>
+          <div class="mini-flow mono"><span>Unit</span><i class="bx bx-chevron-right"></i><span>Department</span><i class="bx bx-chevron-right"></i><span>HSN</span><i class="bx bx-chevron-right"></i><span>GST</span></div>
+          <details>
+            <summary>Show details</summary>
+            <ul class="feat">
+              <li>Dependent ProductionUnit → Department dropdowns</li>
+              <li>Tax data auto-filled from the HSN master</li>
+              <li>Connected to SQL Server through ASMX web services</li>
+            </ul>
+          </details>
+          <div class="chips"><span>VB.NET</span><span>ASMX</span><span>SQL Server</span></div>
+        </article>
+      </div>
 
-            <article class="pcard reveal" data-cat="erp">
-                <div class="thumb"><span class="tag">Case Study</span><img src="img/5.jpg" alt="Estimo ERP"></div>
-                <div class="body">
-                    <h3>Estimo ERP — Case Study</h3>
-                    <p>An ERP case study exploring estimation, inventory and reporting workflows for business.</p>
-                    <div class="links">
-                        <a href="https://github.com/anju-rajawat/Estimo-ERP-Case-Study" target="_blank" rel="noopener"><i class='bx bxl-github'></i> Code</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="pcard reveal" data-cat="frontend">
-                <div class="thumb"><span class="tag">Frontend</span><img src="img/6.jpg" alt="React Mongo API"></div>
-                <div class="body">
-                    <h3>React + Mongo API Call</h3>
-                    <p>React app consuming a MongoDB-backed REST API with full CRUD operations and live data.</p>
-                    <div class="links">
-                        <a href="https://github.com/anju-rajawat/React_Mongo_api_Call" target="_blank" rel="noopener"><i class='bx bxl-github'></i> Code</a>
-                    </div>
-                </div>
-            </article>
-        </div>
+      <h3 class="sub-head reveal"><i class="bx bxl-github"></i> Personal projects on GitHub</h3>
+      <div class="projects">
+        <article class="pcard glass reveal tilt">
+          <span class="spot"></span>
+          <div class="p-top"><span class="tag mono live"><span class="dot-live"></span> Live</span></div>
+          <h3>BuildMart: Marketplace + ERP</h3>
+          <p>A marketplace and ERP for construction materials, built with React, TypeScript and Tailwind and deployed on Vercel.</p>
+          <div class="chips"><span>React</span><span>TypeScript</span><span>Tailwind</span></div>
+          <div class="links">
+            <a href="https://buildmart-marketplace-erp.vercel.app" target="_blank" rel="noopener"><i class="bx bx-link-external"></i> Live demo</a>
+            <a href="https://github.com/anju-rajawat/buildmart-marketplace-erp" target="_blank" rel="noopener"><i class="bx bxl-github"></i> Code</a>
+          </div>
+        </article>
+        <article class="pcard glass reveal tilt">
+          <span class="spot"></span>
+          <div class="p-top"><span class="tag mono">Case study</span></div>
+          <h3>Estimo ERP: Case Study</h3>
+          <p>An ERP case study covering estimation, inventory and reporting workflows for a business.</p>
+          <div class="chips"><span>ERP design</span><span>Workflows</span></div>
+          <div class="links"><a href="https://github.com/anju-rajawat/Estimo-ERP-Case-Study" target="_blank" rel="noopener"><i class="bx bxl-github"></i> Code</a></div>
+        </article>
+        <article class="pcard glass reveal tilt">
+          <span class="spot"></span>
+          <div class="p-top"><span class="tag mono">Frontend · API</span></div>
+          <h3>React + Mongo API Call</h3>
+          <p>A React app that does full CRUD against a REST API backed by MongoDB.</p>
+          <div class="chips"><span>React</span><span>REST API</span><span>MongoDB</span></div>
+          <div class="links"><a href="https://github.com/anju-rajawat/React_Mongo_api_Call" target="_blank" rel="noopener"><i class="bx bxl-github"></i> Code</a></div>
+        </article>
+      </div>
     </section>
 
-    <!-- ===== Contact ===== -->
-    <section class="section" id="contact">
-        <div class="section-head reveal"><span>Get in touch</span><h2>Contact Me</h2></div>
-        <div class="contact-grid">
-            <div class="contact-info reveal">
-                <div class="cinfo-item"><div class="ico"><i class='bx bx-envelope'></i></div><div><small>Email</small><b>anjalirajawat712@gmail.com</b></div></div>
-                <div class="cinfo-item"><div class="ico"><i class='bx bx-phone'></i></div><div><small>Phone</small><b>+91 90095 54739</b></div></div>
-                <div class="cinfo-item"><div class="ico"><i class='bx bxl-github'></i></div><div><small>GitHub</small><b>github.com/anju-rajawat</b></div></div>
-                <div class="cinfo-item"><div class="ico"><i class='bx bx-briefcase'></i></div><div><small>Status</small><b>Open to opportunities</b></div></div>
+    <!-- ================= 05 STACK ================= -->
+    <section class="section container" id="stack">
+      <div class="section-head reveal">
+        <span class="kicker mono">05 / stack</span>
+        <h2>The stack, <span class="muted">grouped by the job it does.</span></h2>
+      </div>
+      <div class="stack-tabs reveal" role="tablist" aria-label="Stack categories">
+        <button class="active" data-cat="all">All</button>
+        <button data-cat="build">Build</button>
+        <button data-cat="interface">Interface</button>
+        <button data-cat="data">Data</button>
+        <button data-cat="workflow">Workflows</button>
+        <button data-cat="tools">Delivery</button>
+      </div>
+      <div class="stack-grid" id="stackGrid">
+        <article class="skill-card glass reveal tilt" data-cat="build"><span class="spot"></span>
+          <div class="sk-ico"><i class="bx bx-server"></i></div><h3>Build</h3><p>Server-side logic and services</p>
+          <ul class="sk-list"><li>VB.NET</li><li>ASP.NET Web Forms</li><li>.NET Framework 4.8</li><li>ASMX Web Services</li><li>AJAX · REST-style endpoints</li></ul></article>
+        <article class="skill-card glass reveal tilt" data-cat="interface"><span class="spot"></span>
+          <div class="sk-ico"><i class="bx bx-layout"></i></div><h3>Interface</h3><p>Grids, forms and modals people use all day</p>
+          <ul class="sk-list"><li>JavaScript (ES6)</li><li>jQuery</li><li>DevExtreme: dxDataGrid, dxSelectBox, dxDateBox, dxButton</li><li>Bootstrap 5 · responsive UI</li><li>HTML5 · CSS3</li></ul></article>
+        <article class="skill-card glass reveal tilt" data-cat="data"><span class="spot"></span>
+          <div class="sk-ico"><i class="bx bx-data"></i></div><h3>Data</h3><p>Schemas and queries that keep data correct</p>
+          <ul class="sk-list"><li>SQL Server · LocalDB</li><li>T-SQL: multi-table joins, EXISTS filters</li><li>Schema design</li><li>Query optimization</li><li>Stored-procedure integration</li></ul></article>
+        <article class="skill-card glass reveal tilt" data-cat="workflow"><span class="spot"></span>
+          <div class="sk-ico"><i class="bx bx-git-branch"></i></div><h3>Workflows</h3><p>Patterns I apply in every module</p>
+          <ul class="sk-list"><li>CRUD workflows</li><li>Approval workflows</li><li>Role-based visibility</li><li>Modal / grid-driven forms</li><li>Data validation</li></ul></article>
+        <article class="skill-card glass reveal tilt" data-cat="tools"><span class="spot"></span>
+          <div class="sk-ico"><i class="bx bx-rocket"></i></div><h3>Delivery</h3><p>Day-to-day toolchain</p>
+          <ul class="sk-list"><li>Visual Studio 2022</li><li>IIS Express</li><li>Git</li><li>PowerShell</li><li>Excel automation</li></ul></article>
+        <article class="skill-card glass reveal tilt" data-cat="interface"><span class="spot"></span>
+          <div class="sk-ico"><i class="bx bx-test-tube"></i></div><h3>Also explored</h3><p>In my personal GitHub projects</p>
+          <ul class="sk-list"><li>React</li><li>TypeScript</li><li>Tailwind CSS</li><li>MongoDB-backed REST API</li></ul></article>
+      </div>
+    </section>
+
+    <!-- ================= 06 PRINCIPLES ================= -->
+    <section class="section container" id="principles">
+      <div class="section-head reveal">
+        <span class="kicker mono">06 / how I work</span>
+        <h2>Four rules <span class="muted">I build by.</span></h2>
+      </div>
+      <ol class="principles">
+        <li class="reveal"><span class="mono">01</span><div><h3>Configure, don't hard-code.</h3><p>If a new item category needs a code change, the design is wrong. Metadata should drive the form.</p></div></li>
+        <li class="reveal"><span class="mono">02</span><div><h3>Never break what already works.</h3><p>Refactors in a large codebase keep every existing validation and backend behaviour.</p></div></li>
+        <li class="reveal"><span class="mono">03</span><div><h3>The data has to be right.</h3><p>T-SQL checks across hundreds of records come before the UI looks finished.</p></div></li>
+        <li class="reveal"><span class="mono">04</span><div><h3>Listen to the people using it.</h3><p>Bulk allocation, consistent buttons and responsive grids all came from user feedback.</p></div></li>
+      </ol>
+    </section>
+
+    <!-- ================= 07 EXPERIENCE ================= -->
+    <section class="section container" id="experience">
+      <div class="section-head reveal">
+        <span class="kicker mono">07 / experience</span>
+        <h2>Where I've worked.</h2>
+      </div>
+      <div class="timeline" id="timeline">
+        <div class="tl-line"><span id="tlFill"></span></div>
+        <article class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card glass">
+            <div class="tl-head">
+              <div><h3>Software Developer</h3><p class="org">Indus Analytics · ERP Web Application (Manufacturing / Printing)</p></div>
+              <span class="when mono">Nov 2024 – Present</span>
             </div>
-            <form id="contactForm" class="reveal">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <input type="text" name="address" placeholder="Your Company">
-                <input type="tel" name="phone" placeholder="Phone Number">
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn primary full">Send Message <i class='bx bx-send'></i></button>
-            </form>
+            <ul class="tl-list">
+              <li>Built <b>end-to-end ERP modules</b> in ASP.NET Web Forms (VB.NET), used daily by inventory, purchase and production teams. I owned each one from UI and database design through web-service integration and testing.</li>
+              <li>Engineered a <b>configuration-driven form engine</b> that reads metadata to render the right fields, validations and item-name templates for each product group. It removed dozens of hard-coded screens.</li>
+              <li><b>Re-architected</b> the duplicated Item and Spare-part flows into one flag-driven workflow. This cut redundant grids, modals and save logic by roughly half, with full backward compatibility.</li>
+              <li>Built a <b>role-based access layer</b> so only a request's creator and their reporting HOD can see it, and added one-click "Send for Approval" actions inside the grid.</li>
+              <li>Developed the <b>AMC, Capex and HSN/GST master modules</b>, with dependent dropdowns and auto-filled tax data, connected through ASMX web services.</li>
+              <li>Wrote <b>complex T-SQL</b>: multi-table joins, EXISTS filters and bulk checks that validated data across hundreds of records.</li>
+              <li>Made <b>usability improvements</b> based on direct user feedback: bulk approver allocation by department, consistent action buttons and responsive grids.</li>
+            </ul>
+            <div class="chips"><span>VB.NET</span><span>ASP.NET Web Forms</span><span>SQL Server</span><span>DevExtreme</span><span>jQuery</span><span>ASMX</span></div>
+          </div>
+        </article>
+        <article class="tl-item reveal">
+          <div class="tl-dot past"></div>
+          <div class="tl-card glass">
+            <div class="tl-head">
+              <div><h3>Intern → Software Developer</h3><p class="org">InfoBeans</p></div>
+              <span class="when mono">Before Nov 2024</span>
+            </div>
+            <p class="tl-sum">Began my career at InfoBeans as an intern, then joined as a full-time developer. This was my professional
+              foundation before I moved to Indus Analytics to work on enterprise ERP.</p>
+            <div class="tl-steps"><span><i class="bx bx-book-open"></i> Internship</span><i class="bx bx-right-arrow-alt"></i><span><i class="bx bx-briefcase"></i> Full-time</span></div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Recognition -->
+      <div class="award-wrap reveal" id="recognition">
+        <div class="award-info">
+          <div class="award-medal"><i class="bx bxs-award"></i></div>
+          <span class="award-date mono"><i class="bx bx-calendar"></i> 05 Nov 2026</span>
+          <h3>Certificate of Contribution</h3>
+          <p class="award-title">Excellence in Functional Development &amp; Process Integration</p>
+          <p class="muted">Presented by <b>Indus Analytics Pvt. Ltd.</b> and signed by the CTO. It recognizes my work building functional modules
+            and business workflows from start to finish, with smooth integration across modules in the company's new-generation product.</p>
+          <blockquote>“Turning Functionalities into Seamless Experiences.”</blockquote>
+          <div class="chips gold-chips">
+            <span>Functional Module Development</span><span>Business Workflow Implementation</span><span>End-to-End Process Execution</span>
+            <span>Cross-Module Integration</span><span>Functional Completeness &amp; Validation</span>
+          </div>
         </div>
+        <button class="cert-frame tilt" id="certOpen" aria-label="View certificate in full size">
+          <span class="spot"></span><span class="cert-shine"></span>
+          <img src="img/certificate-contribution.jpg" alt="Certificate of Contribution awarded to Anjali by Indus Analytics, 05 Nov 2026" width="1400" height="957" loading="lazy">
+          <span class="cert-zoom"><i class="bx bx-expand-alt"></i> View full certificate</span>
+        </button>
+      </div>
     </section>
 
-    <!-- ===== Footer ===== -->
-    <footer>
-        <p>© 2026 Anjali Rajawat — .NET Full-Stack Developer.</p>
-        <a href="#home" class="up" id="toTop"><i class='bx bx-up-arrow-alt'></i></a>
-    </footer>
+    <!-- ================= CONTACT ================= -->
+    <section class="section container" id="contact">
+      <div class="cta reveal">
+        <span class="kicker mono">08 / contact</span>
+        <h2 class="cta-title">Let's build your next<br><span class="grad-text">reliable system.</span></h2>
+        <p class="muted">I'm open to .NET, full-stack and backend developer roles. Email is the quickest way to reach me.</p>
+        <a href="mailto:anjalirajawat712@gmail.com" class="cta-mail magnetic"><i class="bx bx-envelope"></i> anjalirajawat712@gmail.com <i class="bx bx-up-right-arrow-alt"></i></a>
+        <div class="cta-links">
+          <a href="https://github.com/anju-rajawat" target="_blank" rel="noopener"><i class="bx bxl-github"></i> GitHub</a>
+          <a href="https://www.linkedin.com/in/anjali-rajawat" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i> LinkedIn</a>
+          <a href="tel:+919009554739"><i class="bx bx-phone"></i> +91 90095 54739</a>
+          <a href="Anjali_Rajawat_Resume.pdf" download><i class="bx bx-download"></i> Resume</a>
+        </div>
+      </div>
 
-    <script src="Portfolio.js"></script>
+      <form id="contactForm" class="contact-form glass reveal" novalidate>
+        <h3>Or send a message</h3>
+        <div class="form-row">
+          <div class="field"><input id="cf-name" name="name" type="text" placeholder=" " required><label for="cf-name">Your name</label></div>
+          <div class="field"><input id="cf-email" name="email" type="email" placeholder=" " required><label for="cf-email">Your email</label></div>
+        </div>
+        <div class="field"><input id="cf-company" name="company" type="text" placeholder=" "><label for="cf-company">Company (optional)</label></div>
+        <div class="field"><textarea id="cf-msg" name="message" rows="4" placeholder=" " required></textarea><label for="cf-msg">Message</label></div>
+        <p class="form-note" id="formNote" role="status"></p>
+        <button type="submit" class="btn primary magnetic"><span>Send message</span><i class="bx bx-send"></i></button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <span class="mono f-status"><span class="dot-live"></span> available · <span id="footClock">--:--</span> IST</span>
+    <p>© <span id="year">2026</span> Anjali Rajawat · .NET Full-Stack Developer</p>
+    <a href="#home" class="to-top" aria-label="Back to top"><i class="bx bx-up-arrow-alt"></i></a>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate" hidden>
+    <button class="lb-close" id="lbClose" aria-label="Close"><i class="bx bx-x"></i></button>
+    <img src="img/certificate-contribution.jpg" alt="Certificate of Contribution, full size" loading="lazy" decoding="async">
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="Portfolio.js" defer></script>
 </body>
 
 </html>
